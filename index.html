@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Sulekha and Anubhav are getting married. Events in Jaipur and Rohtak, November 2026.">
+<title>Sulekha and Anubhav</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&family=DM+Sans:wght@400;500&family=Yatra+One&family=Tiro+Devanagari+Hindi&display=swap">
+<style>
+/* Layout: white name band, two regional doors (Haryanvi phulkari for the bride, Rajasthani bandhej for the groom); each door opens a one-column page dressed in its region */
+:root{
+  color-scheme:light;
+  --paper:#FFFFFF; --ink:#262222; --muted:#6E6762; --line:#EFE8E2;
+  /* Haryana: phulkari red, sarson mustard, field green */
+  --har:#A3162F; --har-deep:#7C0F23; --har-gold:#F2C230; --har-soft:#FFF8E6; --har-green:#4F8A3B;
+  /* Rajasthan: Jaipur pink, haldi gold, leheriya blush */
+  --raj:#B0225A; --raj-deep:#861743; --raj-gold:#F4B740; --raj-soft:#FDF0F4; --raj-indigo:#2E3A87;
+  --display:'Playfair Display',Georgia,serif;
+  --body:'DM Sans',system-ui,-apple-system,sans-serif;
+  --folk:'Yatra One','Tiro Devanagari Hindi',serif;
+  --deva:'Tiro Devanagari Hindi','Noto Sans Devanagari',serif;
+  --phulkari:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Crect width='28' height='28' fill='%23A3162F'/%3E%3Cpath d='M14 3l11 11-11 11L3 14z' fill='none' stroke='%23F2C230' stroke-width='2'/%3E%3Cpath d='M14 9.5l4.5 4.5-4.5 4.5L9.5 14z' fill='%23F7A21B'/%3E%3Ccircle cx='0' cy='0' r='2' fill='%23F2C230'/%3E%3Ccircle cx='28' cy='0' r='2' fill='%23F2C230'/%3E%3Ccircle cx='0' cy='28' r='2' fill='%23F2C230'/%3E%3Ccircle cx='28' cy='28' r='2' fill='%23F2C230'/%3E%3C/svg%3E");
+  --sarson:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Ccircle cx='8' cy='8' r='2' fill='%23F2C230' opacity='.55'/%3E%3Cpath d='M8 11v8' stroke='%234F8A3B' stroke-width='1.2' opacity='.35'/%3E%3Ccircle cx='26' cy='24' r='2' fill='%23F2C230' opacity='.55'/%3E%3Cpath d='M26 27v7' stroke='%234F8A3B' stroke-width='1.2' opacity='.35'/%3E%3C/svg%3E");
+  --bandhej:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Crect width='18' height='18' fill='%23C2336E'/%3E%3Ccircle cx='4.5' cy='4.5' r='1.8' fill='%23FCE4EC'/%3E%3Ccircle cx='13.5' cy='13.5' r='1.8' fill='%23FCE4EC'/%3E%3Ccircle cx='13.5' cy='4.5' r='1' fill='%23F4B740'/%3E%3Ccircle cx='4.5' cy='13.5' r='1' fill='%23F4B740'/%3E%3C/svg%3E");
+  --leheriya:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cg transform='rotate(35 20 20)'%3E%3Crect x='-20' y='4' width='80' height='4' fill='%23F6C5D6' opacity='.55'/%3E%3Crect x='-20' y='16' width='80' height='2' fill='%23F9DCA0' opacity='.6'/%3E%3Crect x='-20' y='26' width='80' height='4' fill='%23F6C5D6' opacity='.55'/%3E%3C/g%3E%3C/svg%3E");
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0}
+html,body{background:var(--paper);color:var(--ink)}
+body{font-family:var(--body);font-size:16px;line-height:1.6}
+h1,h2,h3,h4{font-family:var(--display);font-weight:500;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:inherit}
+button{font:inherit}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.col{max-width:760px;margin:0 auto}
+.tba{color:var(--muted);font-style:italic}
+
+/* ---------- Landing ---------- */
+.top{padding-block:44px 30px;text-align:center}
+.top .col{display:grid;gap:8px;justify-items:center}
+.kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.top h1{font-size:clamp(38px,8vw,64px);line-height:1.05}
+.top h1 i{font-size:.62em;color:var(--muted)}
+.tag{color:var(--muted)}
+.count{display:flex;gap:8px;justify-content:center;margin-top:10px}
+.count div{min-width:68px;padding:8px 6px;border-radius:10px;display:grid;line-height:1.15;border:1px solid var(--line);background:var(--paper)}
+.count b{font-family:var(--display);font-weight:500;font-size:26px;font-variant-numeric:tabular-nums}
+.count span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.count.done{font-family:var(--display);font-size:22px}
+
+.doors{display:grid;grid-template-columns:1fr 1fr;min-height:440px}
+.door{position:relative;display:flex;align-items:center;justify-content:center;text-decoration:none;padding-block:56px;overflow:hidden}
+.door.bride{background:var(--har) var(--phulkari)}
+.door.groom{background:#C2336E var(--bandhej)}
+.plate{position:relative;text-align:center;color:#fff;padding:22px 26px;display:grid;gap:4px;justify-items:center;max-width:280px;transition:transform .25s ease}
+.door:hover .plate{transform:translateY(-4px)}
+.bride .plate{background:var(--har);border:2px solid var(--har-gold);border-radius:10px;box-shadow:0 0 0 6px var(--har)}
+.groom .plate{background:var(--raj);border:2px solid var(--raj-gold);border-radius:140px 140px 10px 10px;padding-top:36px;box-shadow:0 0 0 6px var(--raj)}
+.plate .greet{font-family:var(--deva);font-size:15px}
+.bride .greet,.bride .plate b{color:var(--har-gold)}
+.groom .greet,.groom .plate b{color:var(--raj-gold)}
+.plate b{font-family:var(--folk);font-weight:400;font-size:clamp(26px,4vw,34px);line-height:1.2}
+.plate small{font-size:14px}
+.plate .go{margin-top:10px;font-size:13px;font-weight:500;border-radius:999px;padding:7px 18px}
+.bride .go{background:var(--har-gold);color:var(--har-deep)}
+.groom .go{background:var(--raj-gold);color:var(--raj-deep)}
+
+.story{padding-block:48px}
+.story .col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:28px;align-items:center}
+.photo{aspect-ratio:4/5;max-width:100%;border-radius:200px 200px 14px 14px;background:#F4EFEA;border:1px dashed #D9CFC6;display:grid;place-items:center;color:var(--muted);font-size:14px;text-align:center;padding:16px}
+.story h2{font-size:30px;margin-bottom:10px}
+.story p{max-width:56ch}
+.foot{padding-block:22px 34px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+
+/* ---------- Side pages ---------- */
+.side{--c:var(--har);--deep:var(--har-deep);--gold:var(--har-gold);--soft:var(--har-soft);--band:var(--har) var(--phulkari);--wash:var(--har-soft) var(--sarson);--arch:10px}
+.side.groom{--c:var(--raj);--deep:var(--raj-deep);--gold:var(--raj-gold);--soft:var(--raj-soft);--band:#C2336E var(--bandhej);--wash:var(--raj-soft) var(--leheriya);--arch:26px 26px 8px 8px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:var(--c);color:#fff}
+.bar .col{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:10px;font-size:14px}
+.bar a{text-decoration:none;font-weight:500}
+.bar a.sw{color:var(--gold)}
+.band{background:var(--band);padding-block:40px 0}
+.band .col{display:flex;justify-content:center}
+.crest{background:var(--soft);color:var(--deep);text-align:center;padding:26px 28px 22px;display:grid;gap:6px;justify-items:center;border:2px solid var(--gold);border-bottom:0;width:min(520px,100%)}
+.bride .crest{border-radius:12px 12px 0 0}
+.groom .crest{border-radius:260px 260px 0 0;padding-top:44px}
+.crest .greet{font-family:var(--folk);font-size:20px;color:var(--c)}
+.crest h2{font-size:clamp(30px,6vw,44px);line-height:1.1}
+.crest .place{font-size:14px;color:var(--muted)}
+.crest .count div{background:#fff}
+.chips{background:var(--soft);border-bottom:1px solid var(--line)}
+.chips .col{display:flex;gap:8px;overflow-x:auto;padding-block:12px;scrollbar-width:none}
+.chips button{flex:none;border:1px solid var(--c);color:var(--c);background:#fff;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:500;cursor:pointer}
+.chips button:hover{background:var(--c);color:#fff}
+.body{background:var(--wash)}
+.body .col{padding-block:12px 56px}
+.sec{padding-block:34px 6px;display:grid;gap:16px;scroll-margin-top:64px}
+.sec>h3{font-size:28px;color:var(--deep)}
+.sec>h3 small{display:block;font-family:var(--deva);font-size:15px;color:var(--muted);font-weight:400}
+.intro{max-width:60ch}
+
+.events{display:grid;gap:14px}
+.ev{background:#fff;border:1px solid var(--line);border-radius:var(--arch);overflow:hidden;display:grid;grid-template-columns:8px minmax(0,1fr)}
+.ev::before{content:"";background:var(--evc,var(--c))}
+.ev .in{padding:16px 18px;display:grid;gap:10px}
+.ev .hd{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.ev h4{font-size:22px}
+.ev h4 span{font-family:var(--deva);font-size:15px;color:var(--muted);margin-left:8px;font-weight:400}
+.ev .when{font-size:14px;font-weight:500;color:var(--deep);font-variant-numeric:tabular-nums}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px 16px;font-size:14px}
+.facts div{min-width:0}
+.facts .k{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ev.main{border-color:var(--gold)}
+.ev.main .in{background:var(--soft)}
+.prog{list-style:none;margin:0;padding:0;display:grid;font-size:14px}
+.prog li{display:flex;gap:10px;padding-block:6px;border-top:1px dashed var(--line)}
+.prog li:first-child{border-top:0}
+.prog b{font-weight:500;min-width:76px;font-variant-numeric:tabular-nums;color:var(--deep)}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:500;text-decoration:none;border:1px solid var(--c);color:var(--c);background:#fff;cursor:pointer}
+.btn.solid{background:var(--c);color:#fff}
+.btn.gold{background:var(--gold);color:var(--deep);border-color:var(--gold)}
+
+.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:10px;align-content:start}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.panel h4{font-size:19px;color:var(--deep)}
+.panel ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.dress{display:grid;gap:8px}
+.dress div{display:flex;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px}
+.dress b{font-weight:500}
+
+form{display:grid;gap:14px}
+.f{display:grid;gap:6px;min-width:0}
+.f label,.f legend{font-size:13px;font-weight:500;color:var(--deep)}
+.f input,.f select,.f textarea{font:inherit;font-size:15px;padding:10px 12px;border:1px solid #DCD3CC;border-radius:10px;background:#fff;color:var(--ink);width:100%}
+.f textarea{min-height:76px;resize:vertical}
+fieldset.f{border:0;margin:0;padding:0}
+.checks{display:flex;flex-wrap:wrap;gap:8px}
+.checks label{display:flex;align-items:center;gap:6px;border:1px solid #DCD3CC;border-radius:999px;padding:6px 12px;font-weight:400;color:var(--ink);cursor:pointer;background:#fff}
+.checks input{accent-color:var(--c);width:auto}
+.err{color:#B3261E;font-size:13px}
+.out{background:var(--soft);border:1px dashed var(--c);border-radius:12px;padding:14px;display:grid;gap:10px}
+.out pre{margin:0;white-space:pre-wrap;font:14px/1.5 var(--body);user-select:all}
+
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+details+details{margin-top:8px}
+summary{cursor:pointer;font-weight:500}
+details p{margin-top:8px;color:var(--ink)}
+
+@media (max-width:600px){
+  .doors{grid-template-columns:1fr;min-height:0}
+  .door{padding-block:44px}
+  .story .col{grid-template-columns:1fr}
+  .photo{max-width:260px;margin:0 auto;width:100%}
+}
+@media (prefers-reduced-motion:reduce){.plate{transition:none}}
+</style>
+
+</head>
+<body>
+<div id="landing">
+  <header class="top wrap"><div class="col">
+    <div class="kicker">November 2026 · Rohtak and Jaipur</div>
+    <h1>Sulekha <i>and</i> Anubhav</h1>
+    <p class="tag">Two hometowns, one wedding</p>
+    <div class="count" data-count></div>
+  </div></header>
+
+  <nav class="doors" aria-label="Choose a side">
+    <a class="door bride wrap" href="#bride">
+      <span class="plate">
+        <span class="greet">म्हारे ब्याह म्ह जरूर आइयो</span>
+        <b>Bride's side</b>
+        <small>Rohtak, Haryana</small>
+        <span class="go">See events</span>
+      </span>
+    </a>
+    <a class="door groom wrap" href="#groom">
+      <span class="plate">
+        <span class="greet">पधारो म्हारे देस</span>
+        <b>Groom's side</b>
+        <small>Jaipur, Rajasthan</small>
+        <span class="go">See events</span>
+      </span>
+    </a>
+  </nav>
+
+  <section class="story wrap"><div class="col">
+    <div class="photo">Your photo together goes here</div>
+    <div>
+      <div class="kicker">Our story</div>
+      <h2>How we met</h2>
+      <p class="tba">Coming soon</p>
+    </div>
+  </div></section>
+
+  <footer class="foot wrap">See you in November</footer>
+</div>
+
+<div id="side" class="side" hidden></div>
+
+<script>
+var MAP = function(q){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);};
+var TBA = '<span class="tba">To be added</span>';
+
+var SIDES = {
+  bride:{
+    label:"Bride's side", other:'groom', otherLabel:"Groom's side",
+    greet:'म्हारे ब्याह म्ह जरूर आइयो', greetEn:'Do come to our wedding',
+    title:'Sulekha weds Anubhav', place:'Rohtak, Haryana',
+    whatsapp:'',
+    events:[
+      {name:'Haldi', hi:'हल्दी', color:'#F2C230', when:'', venue:'', dress:''},
+      {name:'Mehendi', hi:'मेहंदी', color:'#4F8A3B', when:'', venue:'', dress:''},
+      {name:'Sangeet', hi:'संगीत', color:'#D9418A', when:'', venue:'', dress:''},
+      {name:'Wedding', hi:'शुभ विवाह', color:'#A3162F', main:true, when:'Fri 20 Nov · 8 PM',
+       venue:'Singhasan Banquet Hall, Tilyar Lake', map:'Singhasan Banquet Hall Tilyar Lake Rohtak', dress:'',
+       prog:[['8:00 PM','Dinner'],['8:30 PM','Baraat welcome'],['Late night','Vidaai, under the stars']]}
+    ],
+    travel:[
+      ['Fly in','Delhi Airport (DEL), then 1.5 to 2 hrs by road'],
+      ['Train','Rohtak Junction']
+    ]
+  },
+  groom:{
+    label:"Groom's side", other:'bride', otherLabel:"Bride's side",
+    greet:'पधारो म्हारे देस', greetEn:'Welcome to our land',
+    title:'Anubhav weds Sulekha', place:'Jaipur, Rajasthan',
+    stay:['Libra Lords Inn','Rooms are booked for you.','Libra Lords Inn Jaipur Sikar Road Ambabari'],
+    whatsapp:'4915124325746',
+    contact:'Anubhav: call +91 96678 26471, WhatsApp +49 151 24325746',
+    events:[
+      {name:'Haldi', hi:'हल्दी', color:'#F4B740', when:'Thu 19 Nov · 2 PM',
+       venue:'Libra Lords Inn, Sikar Road',
+       map:'Libra Lords Inn Jaipur Sikar Road Ambabari',
+       dress:'Yellow · light cotton · flats'},
+      {name:'Mehendi', hi:'मेहंदी', color:'#4F8A3B', when:'Thu 19 Nov · 6 PM',
+       venue:'Home, Karni Colony',
+       map:'Plot 23, Karni Colony, Bhamashah Marg, Jaipur',
+       dress:'Green or bright · easy sleeves'},
+      {name:'Baraat', hi:'बारात प्रस्थान', color:'#B0225A', main:true, when:'Fri 20 Nov · Morning',
+       venue:'Libra Lords Inn', map:'Libra Lords Inn Jaipur Sikar Road Ambabari',
+       dress:'Comfy for the bus · festive for the night',
+       note:'Our bus to the wedding in Rohtak, 5 to 6 hrs.', link:'bride'}
+    ],
+    travel:[
+      ['Fly in','Jaipur Airport (JAI)'],
+      ['To Rohtak','Our baraat bus. Tick it in your RSVP.']
+    ]
+  }
+};
+
+var FAQ = [
+  ['What should I wear?','Indian festive wear. Each event lists its colours.'],
+  ['Weather?','Warm days, cool nights. Pack a shawl.'],
+  ['Visa from abroad?','Most Europeans need an e-Visa: indianvisaonline.gov.in'],
+  ['Who do I call?','To be added']
+];
+
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function v(x){return x?esc(x):TBA;}
+
+function renderSide(key){
+  var s=SIDES[key], el=document.getElementById('side');
+  el.className='side '+key;
+  var ev=s.events.map(function(e){
+    var prog=e.prog?'<ul class="prog">'+e.prog.map(function(p){return '<li><b>'+esc(p[0])+'</b><span>'+esc(p[1])+'</span></li>';}).join('')+'</ul>':'';
+    var links='';
+    if(e.map) links+='<a class="btn solid" target="_blank" rel="noopener" href="'+MAP(e.map)+'">Map</a>';
+    if(e.main && key==='bride') links+='<a class="btn" target="_blank" rel="noopener" href="'+CAL+'">Add to calendar</a>';
+    if(e.link) links+='<a class="btn solid" href="#'+e.link+'">Wedding day</a>';
+    return '<article class="ev'+(e.main?' main':'')+'" style="--evc:'+e.color+'"><div class="in">'+
+      '<div class="hd"><h4>'+esc(e.name)+'<span>'+esc(e.hi)+'</span></h4><span class="when">'+(e.when?esc(e.when):'<span class="tba">Coming soon</span>')+'</span></div>'+
+      (e.note?'<p>'+esc(e.note)+'</p>':'')+
+      ((e.venue||e.dress)?'<div class="facts">'+(e.venue?'<div><span class="k">Where</span>'+esc(e.venue)+'</div>':'')+(e.dress?'<div><span class="k">Wear</span>'+esc(e.dress)+'</div>':'')+'</div>':'')+
+      prog+(links?'<div class="links">'+links+'</div>':'')+'</div></article>';
+  }).join('');
+  var travel=s.travel.map(function(t){return '<div class="panel"><h4>'+esc(t[0])+'</h4><p>'+esc(t[1])+'</p></div>';}).join('');
+  var checks=s.events.map(function(e,i){return '<label><input type="checkbox" id="ev-'+key+'-'+i+'" value="'+esc(e.name)+'" checked> '+esc(e.name)+'</label>';}).join('');
+  var faq=FAQ.map(function(f,i){var a=(i===FAQ.length-1&&s.contact)?s.contact:f[1];return '<details><summary>'+esc(f[0])+'</summary><p>'+esc(a)+'</p></details>';}).join('');
+
+  el.innerHTML=
+    '<div class="bar wrap"><div class="col"><a href="#">← Home</a><a class="sw" href="#'+s.other+'">'+s.otherLabel+' →</a></div></div>'+
+    '<div class="band wrap"><div class="col"><div class="crest">'+
+      '<div class="greet">'+s.greet+'</div>'+
+      '<h2>'+esc(s.title)+'</h2><div class="place">'+esc(s.place)+'</div>'+
+      '<div class="count" data-count></div></div></div></div>'+
+    '<nav class="chips wrap" aria-label="Sections"><div class="col">'+
+      [['events','Events'],['travel','Travel'],['stay','Stay'],['rsvp','RSVP'],['faq','FAQ']].map(function(c){return '<button type="button" data-jump="'+c[0]+'">'+c[1]+'</button>';}).join('')+
+    '</div></nav>'+
+    '<div class="body wrap"><div class="col">'+
+      '<section class="sec" id="s-events"><h3>Events</h3><div class="events">'+ev+'</div></section>'+
+      '<section class="sec" id="s-travel"><h3>Travel</h3><div class="grid2">'+travel+'</div></section>'+
+      '<section class="sec" id="s-stay"><h3>Stay</h3><div class="panel"><h4>'+(s.stay?esc(s.stay[0]):'Hotels')+'</h4>'+(s.stay?'<p>'+esc(s.stay[1])+'</p>'+(s.stay[2]?'<div class="links"><a class="btn solid" target="_blank" rel="noopener" href="'+MAP(s.stay[2])+'">Map</a></div>':''):'<p class="tba">Coming soon</p>')+'</div></section>'+
+      '<section class="sec" id="s-rsvp"><h3>RSVP</h3>'+
+        '<div class="panel"><form id="rsvp" novalidate>'+
+          '<div class="grid2"><div class="f"><label for="r-name">Name</label><input id="r-name" autocomplete="name" placeholder="Priya Mehta"></div>'+
+          '<div class="f"><label for="r-guests">Guests</label><select id="r-guests"><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option></select></div></div>'+
+          '<fieldset class="f"><legend>Coming to</legend><div class="checks">'+checks+'</div></fieldset>'+
+          '<div class="grid2"><div class="f"><label for="r-food">Food</label><select id="r-food"><option>Vegetarian</option><option>Jain</option><option>Vegan</option><option>No preference</option></select></div>'+
+          '<div class="f"><label for="r-msg">Note (optional)</label><input id="r-msg" placeholder="Can\'t wait!"></div></div>'+
+          '<p class="err" id="r-err" hidden></p>'+
+          '<div class="links"><button class="btn solid" type="submit">Send RSVP</button></div>'+
+        '</form><div class="out" id="r-out" hidden></div></div></section>'+
+      '<section class="sec" id="s-faq"><h3>FAQ</h3><div>'+faq+'</div></section>'+
+    '</div></div>';
+
+  el.querySelectorAll('[data-jump]').forEach(function(b){
+    b.addEventListener('click',function(){var t=document.getElementById('s-'+b.dataset.jump);if(t)t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});
+  });
+  wireRsvp(s,key);
+  tick();
+}
+
+function wireRsvp(s,key){
+  var f=document.getElementById('rsvp'),err=document.getElementById('r-err'),out=document.getElementById('r-out'),name=document.getElementById('r-name');
+  name.addEventListener('input',function(){err.hidden=true;});
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!name.value.trim()){err.textContent='Add your name first.';err.hidden=false;name.focus();return;}
+    var evs=[].slice.call(f.querySelectorAll('.checks input:checked')).map(function(i){return i.value;});
+    var msg=document.getElementById('r-msg').value.trim();
+    var text='RSVP for Sulekha and Anubhav ('+s.label+')\nName: '+name.value.trim()+'\nGuests: '+document.getElementById('r-guests').value+
+      '\nEvents: '+(evs.length?evs.join(', '):'Not attending')+'\nFood: '+document.getElementById('r-food').value+
+      (msg?'\nMessage: '+msg:'');
+    var html='<pre>'+esc(text)+'</pre><div class="links">';
+    if(s.whatsapp) html+='<a class="btn solid" target="_blank" rel="noopener" href="https://wa.me/'+s.whatsapp+'?text='+encodeURIComponent(text)+'">Send on WhatsApp</a>';
+    html+='<button class="btn" type="button" id="r-copy">Copy message</button></div>';
+    
+    out.innerHTML=html; out.hidden=false;
+    document.getElementById('r-copy').addEventListener('click',function(){
+      var b=this,pre=out.querySelector('pre');
+      var ok=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy message';},1500);};
+      var fb=function(){var r=document.createRange();r.selectNodeContents(pre);var w=getSelection();w.removeAllRanges();w.addRange(r);};
+      try{navigator.clipboard.writeText(text).then(ok,fb);}catch(x){fb();}
+    });
+    out.scrollIntoView({block:'nearest'});
+  });
+}
+
+var CAL='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Wedding of Sulekha and Anubhav')+
+  '&dates=20261120T143000Z/20261120T200000Z&location='+encodeURIComponent('Singhasan Banquet Hall, behind Tilyar Lake, Rohtak')+
+  '&details='+encodeURIComponent('Dinner 8:00 PM, Baraat welcome 8:30 PM');
+
+var TARGET=new Date('2026-11-20T20:00:00+05:30').getTime();
+function tick(){
+  var ms=TARGET-Date.now();
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    if(ms<=0){el.className='count done';el.textContent='The celebrations have begun';return;}
+    var d=Math.floor(ms/864e5),h=Math.floor(ms/36e5)%24,m=Math.floor(ms/6e4)%60;
+    el.innerHTML='<div><b>'+d+'</b><span>days</span></div><div><b>'+h+'</b><span>hours</span></div><div><b>'+m+'</b><span>mins</span></div>';
+  });
+}
+
+function route(){
+  var h=(location.hash||'').slice(1),side=document.getElementById('side'),land=document.getElementById('landing');
+  if(SIDES[h]){renderSide(h);side.hidden=false;land.hidden=true;}
+  else{side.hidden=true;land.hidden=false;}
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);
+route(); tick(); setInterval(tick,30000);
+</script>
+
+</body>
+</html>
