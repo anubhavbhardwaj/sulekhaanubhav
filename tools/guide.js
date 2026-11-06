@@ -17,7 +17,7 @@ function side(k,title,city,accent){
     <td>${e.venue?esc(e.venue):'<i>To be added</i>'}${e.addr?`<div class="addr">${esc(e.addr)}</div>`:''}${e.prog?'<div class="addr">'+e.prog.map(x=>esc(x[0]+' '+x[1])).join(' · ')+'</div>':''}${e.note?'<div class="addr">'+esc(e.note)+'</div>':''}</td>
     <td>${e.dress?esc(e.dress):'<i>To be added</i>'}</td></tr>`;}).join('');
   const travel=s.travel.map(t=>`<li><b>${esc(t[0])}:</b> ${esc(t[1])}</li>`).join('');
-  const stay=s.stay?`<li><b>Stay:</b> ${esc(s.stay[0])}. ${esc(s.stay[1])}</li>`:'<li><b>Stay:</b> <i>To be added</i></li>';
+  const stay=s.stay?`<li><b>Stay:</b> ${esc(s.stay[0])}. ${esc(s.stay[1])}</li>`:'';
   const contact=s.contact?`<li><b>Contact:</b> ${esc(s.contact)}</li>`:'<li><b>Contact:</b> <i>To be added</i></li>';
   return `<section class="side" style="--a:${accent}">
    <h2>${title} <span>${city}</span></h2>

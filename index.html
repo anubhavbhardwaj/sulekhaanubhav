@@ -404,12 +404,12 @@ function renderSide(key){
       '<h2>'+esc(s.title)+'</h2><div class="place">'+esc(s.place)+'</div>'+'<button class="ht" type="button" data-ht>#AnukhaKiChemistry</button>'+
       '<div class="count" data-count></div></div></div></div>'+
     '<nav class="chips wrap" aria-label="Sections"><div class="col">'+
-      [['events','Events'],['travel','Travel'],['stay','Stay'],['rsvp','RSVP'],['faq','FAQ']].map(function(c){return '<button type="button" data-jump="'+c[0]+'">'+c[1]+'</button>';}).join('')+'<a class="chipdl" href="guide.pdf" download="Sulekha-Anubhav-guest-guide.pdf">Guide PDF</a>'+
+      [['events','Events'],['travel','Travel']].concat(s.stay?[['stay','Stay']]:[]).concat([['rsvp','RSVP'],['faq','FAQ']]).map(function(c){return '<button type="button" data-jump="'+c[0]+'">'+c[1]+'</button>';}).join('')+'<a class="chipdl" href="guide.pdf" download="Sulekha-Anubhav-guest-guide.pdf">Guide PDF</a>'+
     '</div></nav>'+
     '<div class="body wrap"><div class="col">'+
       '<section class="sec" id="s-events"><h3>'+(key==='groom'?'Jaipur celebrations':'Rohtak celebrations')+'</h3><div class="events">'+ev+'</div><p class="cheer">'+s.cheer+'</p></section>'+
       '<section class="sec" id="s-travel"><h3>Travel</h3><div class="grid2">'+travel+'</div></section>'+
-      '<section class="sec" id="s-stay"><h3>Stay</h3><div class="panel"><h4>'+(s.stay?esc(s.stay[0]):'Hotels')+'</h4>'+(s.stay?'<p>'+esc(s.stay[1])+'</p>'+(s.stay[2]?'<div class="links"><a class="btn solid" target="_blank" rel="noopener" href="'+MAP(s.stay[2])+'">Map</a></div>':''):'<p class="tba">Coming soon</p>')+'</div></section>'+
+      (s.stay?'<section class="sec" id="s-stay"><h3>Stay</h3><div class="panel"><h4>'+(s.stay?esc(s.stay[0]):'Hotels')+'</h4>'+(s.stay?'<p>'+esc(s.stay[1])+'</p>'+(s.stay[2]?'<div class="links"><a class="btn solid" target="_blank" rel="noopener" href="'+MAP(s.stay[2])+'">Map</a></div>':''):'<p class="tba">Coming soon</p>')+'</div></section>':'')+
       '<section class="sec" id="s-rsvp"><h3>RSVP</h3>'+
         '<div class="panel"><form id="rsvp" novalidate>'+
           '<div class="grid2"><div class="f"><label for="r-name">Name</label><input id="r-name" autocomplete="name" placeholder="Priya Mehta"></div>'+
