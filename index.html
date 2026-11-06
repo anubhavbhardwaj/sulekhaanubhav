@@ -304,6 +304,7 @@ var TBA = '<span class="tba">To be added</span>';
 
 var SIDES = {
   bride:{
+    noRsvp:true,
     label:"Bride's side", other:'groom', otherLabel:"Groom's side",
     cheer:'म्हारी छोरी का ब्याह सै, धूम मचाणी सै!',
     greet:'म्हारे ब्याह म्ह जरूर आइयो', greetEn:'Do come to our wedding',
@@ -311,8 +312,8 @@ var SIDES = {
     whatsapp:'917021825399',
     contact:'Chetan (Sulekha\'s brother): +91 70218 25399 · Papa: +91 98124 91233 · Mummy: +91 90344 73252',
     events:[
-      {name:'Haldi', hi:'हल्दी', color:'#F2C230', when:'Thu 19 Nov · 9 to 10 AM', venue:'Home, Sector 14', addr:'House No. 400, Sector 14, Rohtak, Haryana', map:'400, Sector 14, Rohtak, Haryana', dress:'Yellow · light cotton · flats'},
-      {name:'Mehendi', hi:'मेहंदी', color:'#4F8A3B', when:'Thu 19 Nov · 7 to 8 PM', venue:'Home, Sector 14', addr:'House No. 400, Sector 14, Rohtak, Haryana', map:'400, Sector 14, Rohtak, Haryana', dress:'Green or bright · easy sleeves'},
+      {name:'Haldi', hi:'हल्दी', color:'#F2C230', when:'Thu 19 Nov · 9 to 10 AM', venue:'Home, Sector 14', addr:'House No. 400, Sector 14, Rohtak, Haryana', map:'400, Sector 14, Rohtak, Haryana', dress:'Yellow · flats'},
+      {name:'Mehendi', hi:'मेहंदी', color:'#4F8A3B', when:'Thu 19 Nov · 7 to 8 PM', venue:'Home, Sector 14', addr:'House No. 400, Sector 14, Rohtak, Haryana', map:'400, Sector 14, Rohtak, Haryana', dress:'Green or bright'},
       {name:'Sangeet', hi:'संगीत', color:'#D9418A', when:'Thu 19 Nov · 8 PM onwards', venue:'Home, Sector 14', addr:'House No. 400, Sector 14, Rohtak, Haryana', map:'400, Sector 14, Rohtak, Haryana', dress:'Glam Indian or Indo-western · dancing shoes'},
       {name:'Wedding', hi:'शुभ विवाह', color:'#A3162F', main:true, when:'Fri 20 Nov · 8 PM',
        venue:'Singhasan Banquet Hall, Tilyar Lake', addr:'Behind Tilyar Lake, Rohtak, Haryana', map:'Singhasan Banquet Hall Tilyar Lake Rohtak', dress:'Traditional Indian · bright colours',
@@ -335,11 +336,11 @@ var SIDES = {
       {name:'Haldi', hi:'हल्दी', color:'#F4B740', when:'Thu 19 Nov · 2 PM',
        venue:'Libra Lords Inn, Sikar Road', addr:'A-7 and A-16, Metal Colony, Sikar Road, Ambabari, Jaipur 302023',
        map:'Libra Lords Inn Jaipur Sikar Road Ambabari',
-       dress:'Yellow · light cotton · flats'},
+       dress:'Yellow · flats'},
       {name:'Mehendi', hi:'मेहंदी', color:'#4F8A3B', when:'Thu 19 Nov · 6 PM',
        venue:'Home, Karni Colony', addr:'Plot 23, Karni Colony, Bhamashah Marg, Jaipur',
        map:'Plot 23, Karni Colony, Bhamashah Marg, Jaipur',
-       dress:'Green or bright · easy sleeves'},
+       dress:'Green or bright'},
       {name:'Baraat', hi:'बारात प्रस्थान', color:'#B0225A', main:true, when:'Fri 20 Nov · Morning',
        venue:'Libra Lords Inn', addr:'Sikar Road, Ambabari, Jaipur', map:'Libra Lords Inn Jaipur Sikar Road Ambabari',
        dress:'Comfy for the bus · festive for the night',
@@ -405,13 +406,13 @@ function renderSide(key){
       '<h2>'+esc(s.title)+'</h2><div class="place">'+esc(s.place)+'</div>'+'<button class="ht" type="button" data-ht>#AnukhaKiChemistry</button>'+
       '<div class="count" data-count></div></div></div></div>'+
     '<nav class="chips wrap" aria-label="Sections"><div class="col">'+
-      [['events','Events'],['travel','Travel']].concat(s.stay?[['stay','Stay']]:[]).concat([['rsvp','RSVP'],['faq','FAQ']]).map(function(c){return '<button type="button" data-jump="'+c[0]+'">'+c[1]+'</button>';}).join('')+'<a class="chipdl" href="guide.pdf" download="Sulekha-Anubhav-guest-guide.pdf">Guide PDF</a>'+
+      [['events','Events'],['travel','Travel']].concat(s.stay?[['stay','Stay']]:[]).concat(s.noRsvp?[]:[['rsvp','RSVP']]).concat([['faq','FAQ']]).map(function(c){return '<button type="button" data-jump="'+c[0]+'">'+c[1]+'</button>';}).join('')+'<a class="chipdl" href="guide.pdf" download="Sulekha-Anubhav-guest-guide.pdf">Guide PDF</a>'+
     '</div></nav>'+
     '<div class="body wrap"><div class="col">'+
       '<section class="sec" id="s-events"><h3>'+(key==='groom'?'Jaipur celebrations':'Rohtak celebrations')+'</h3><div class="events">'+ev+'</div><p class="cheer">'+s.cheer+'</p></section>'+
       '<section class="sec" id="s-travel"><h3>Travel</h3><div class="grid2">'+travel+'</div></section>'+
       (s.stay?'<section class="sec" id="s-stay"><h3>Stay</h3><div class="panel"><h4>'+(s.stay?esc(s.stay[0]):'Hotels')+'</h4>'+(s.stay?'<p>'+esc(s.stay[1])+'</p>'+(s.stay[2]?'<div class="links"><a class="btn solid" target="_blank" rel="noopener" href="'+MAP(s.stay[2])+'">Map</a></div>':''):'<p class="tba">Coming soon</p>')+'</div></section>':'')+
-      '<section class="sec" id="s-rsvp"><h3>RSVP</h3>'+
+      (s.noRsvp?'':'<section class="sec" id="s-rsvp"><h3>RSVP</h3>'+
         '<div class="panel"><form id="rsvp" novalidate>'+
           '<div class="grid2"><div class="f"><label for="r-name">Name</label><input id="r-name" autocomplete="name" placeholder="Priya Mehta"></div>'+
           '<div class="f"><label for="r-guests">Guests</label><select id="r-guests"><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option></select></div></div>'+
@@ -420,14 +421,14 @@ function renderSide(key){
           '<div class="f"><label for="r-msg">Note (optional)</label><input id="r-msg" placeholder="Can\'t wait!"></div></div>'+
           '<p class="err" id="r-err" hidden></p>'+
           '<div class="links"><button class="btn solid" type="submit">Send RSVP</button></div>'+
-        '</form><div class="out" id="r-out" hidden></div></div></section>'+
+        '</form><div class="out" id="r-out" hidden></div></div></section>')+
       '<section class="sec" id="s-faq"><h3>FAQ</h3><div>'+faq+'</div></section>'+
     '</div></div>';
 
   el.querySelectorAll('[data-jump]').forEach(function(b){
     b.addEventListener('click',function(){var t=document.getElementById('s-'+b.dataset.jump);if(t)t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});
   });
-  wireRsvp(s,key);
+  if(!s.noRsvp)wireRsvp(s,key);
   tick();
   if(window.startPetals)startPetals(el);
 }
