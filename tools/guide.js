@@ -27,28 +27,28 @@ function side(k,title,city,accent){
 const html=`<!doctype html><html><head><meta charset="utf-8"><style>
 @page{size:A4;margin:0}
 *{box-sizing:border-box}
-body{margin:0;font:10.5pt/1.45 Inter,'DejaVu Sans',sans-serif;color:#262222;background:#FFF6E6;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;font:10pt/1.4 Inter,'DejaVu Sans',sans-serif;color:#262222;background:#FFF6E6;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .hi{font-family:FreeSerif,serif}
-header{position:relative;background:#7C0F23;color:#FFE7A3;text-align:center;padding:70px 40px 14px}
+header{position:relative;background:#7C0F23;color:#FFE7A3;text-align:center;padding:66px 40px 12px}
 .toran{position:absolute;left:0;right:0;top:0;height:78px;background:${d.toran} repeat-x center top}
 header .hi{color:#F2C230;font-size:14pt}
-header h1{font-family:Caladea,'DejaVu Serif',serif;font-weight:700;font-size:30pt;margin:2px 0 0;letter-spacing:.5px}
+header h1{font-family:Caladea,'DejaVu Serif',serif;font-weight:700;font-size:27pt;margin:0;letter-spacing:.5px}
 header p{margin:0;color:#F9D9A0;font-size:10.5pt;letter-spacing:.14em;text-transform:uppercase}
 main{padding:14px 36px 4px}
 .side{margin-bottom:10px;page-break-inside:avoid}
-h2{font-family:Caladea,'DejaVu Serif',serif;font-size:17pt;color:var(--a);margin:0 0 8px;border-bottom:2px solid var(--a);padding-bottom:3px}
+h2{font-family:Caladea,'DejaVu Serif',serif;font-size:15pt;color:var(--a);margin:0 0 8px;border-bottom:2px solid var(--a);padding-bottom:3px}
 h2 span{font-size:10.5pt;color:#6E6762;font-family:Inter,sans-serif;font-weight:400;margin-left:6px}
-table{width:100%;border-collapse:separate;border-spacing:0 4px;font-size:9.6pt}
+table{width:100%;border-collapse:separate;border-spacing:0 4px;font-size:9.1pt}
 th{text-align:left;font-size:8pt;letter-spacing:.12em;text-transform:uppercase;color:#6E6762;font-weight:500;padding:0 8px}
-td{background:#fff;padding:5px 8px;vertical-align:top}
+td{background:#fff;padding:4px 8px;vertical-align:top}
 td.tag{font-weight:700;width:78px;border-radius:8px 0 0 8px}
 td:last-child{border-radius:0 8px 8px 0;width:24%}
 td:nth-child(2){width:19%}
 .addr{color:#6E6762;font-size:8.6pt;margin-top:2px}
 i{color:#8a817b}
-ul{margin:4px 0 0;padding-left:16px;font-size:9.6pt}
+ul{margin:3px 0 0;padding-left:16px;font-size:9.1pt}
 li{margin:1px 0}
-.faq{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-size:9.4pt}
+.faq{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px 16px;font-size:8.9pt}
 .faq b{display:block;color:#7C0F23}
 footer{margin:6px 36px 0;padding:10px 16px;background:#7C0F23;color:#F9D9A0;border-radius:10px;display:flex;justify-content:space-between;align-items:center;font-size:9.6pt}
 footer .hi{color:#F2C230;font-size:13pt}
