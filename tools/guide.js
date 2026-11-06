@@ -11,7 +11,7 @@ const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 const COL={Haldi:['#F7C531','#4A3300'],Mehendi:['#3E7B2E','#F3FBEA'],Sangeet:['#D9418A','#fff'],Baraat:['#B0225A','#FFE7A3'],Wedding:['#A3162F','#FFE7A3']};
 function side(k,title,city,accent){
   const s=d.SIDES[k];
-  const ev=s.events.map(e=>{const c=COL[e.name]||COL.Wedding;return `<tr>
+  const ev=s.events.filter(e=>!e.shared).map(e=>{const c=COL[e.name]||COL.Wedding;return `<tr>
     <td class="tag" style="background:${c[0]};color:${c[1]}">${esc(e.name)}</td>
     <td>${e.when?esc(e.when):'<i>Coming soon</i>'}</td>
     <td>${e.venue?esc(e.venue):'<i>To be added</i>'}${e.addr?`<div class="addr">${esc(e.addr)}</div>`:''}${e.prog?'<div class="addr">'+e.prog.map(x=>esc(x[0]+' '+x[1])).join(' · ')+'</div>':''}${e.note?'<div class="addr">'+esc(e.note)+'</div>':''}</td>

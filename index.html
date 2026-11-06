@@ -299,6 +299,9 @@ details p{margin-top:8px;color:var(--ink)}
 <div id="side" class="side" hidden></div>
 
 <script>
+var WEDDING = {name:'Wedding', hi:'शुभ विवाह', color:'#A3162F', main:true, when:'Fri 20 Nov · 8 PM',
+       venue:'Singhasan Banquet Hall, Tilyar Lake', addr:'Behind Tilyar Lake, Rohtak, Haryana', map:'Singhasan Banquet Hall Tilyar Lake Rohtak', dress:'Traditional Indian · bright colours',
+       prog:[['8:00 PM','Dinner'],['8:30 PM','Baraat welcome'],['Late night','Vidaai, under the stars']]};
 var MAP = function(q){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);};
 var TBA = '<span class="tba">To be added</span>';
 
@@ -315,9 +318,7 @@ var SIDES = {
       {name:'Haldi', hi:'हल्दी', color:'#F2C230', when:'Thu 19 Nov · 9 to 10 AM', venue:'Home, Sector 14', addr:'House No. 400, Sector 14, Rohtak, Haryana', map:'400, Sector 14, Rohtak, Haryana', dress:'Yellow · flats'},
       {name:'Mehendi', hi:'मेहंदी', color:'#4F8A3B', when:'Thu 19 Nov · 7 to 8 PM', venue:'Home, Sector 14', addr:'House No. 400, Sector 14, Rohtak, Haryana', map:'400, Sector 14, Rohtak, Haryana', dress:'Green or bright'},
       {name:'Sangeet', hi:'संगीत', color:'#D9418A', when:'Thu 19 Nov · 8 PM onwards', venue:'Home, Sector 14', addr:'House No. 400, Sector 14, Rohtak, Haryana', map:'400, Sector 14, Rohtak, Haryana', dress:'Glam Indian or Indo-western · dancing shoes'},
-      {name:'Wedding', hi:'शुभ विवाह', color:'#A3162F', main:true, when:'Fri 20 Nov · 8 PM',
-       venue:'Singhasan Banquet Hall, Tilyar Lake', addr:'Behind Tilyar Lake, Rohtak, Haryana', map:'Singhasan Banquet Hall Tilyar Lake Rohtak', dress:'Traditional Indian · bright colours',
-       prog:[['8:00 PM','Dinner'],['8:30 PM','Baraat welcome'],['Late night','Vidaai, under the stars']]}
+      WEDDING
     ],
     travel:[
       ['Fly in','Delhi Airport (DEL), then 1.5 to 2 hrs by road'],
@@ -344,7 +345,8 @@ var SIDES = {
       {name:'Baraat', hi:'बारात प्रस्थान', color:'#B0225A', main:true, when:'Fri 20 Nov · Morning',
        venue:'Libra Lords Inn', addr:'Sikar Road, Ambabari, Jaipur', map:'Libra Lords Inn Jaipur Sikar Road Ambabari',
        dress:'Comfy for the bus · festive for the night',
-       note:'Our bus to the wedding in Rohtak, 5 to 6 hrs.', link:'bride'}
+       note:'Our bus to the wedding in Rohtak, 5 to 6 hrs.'},
+      Object.assign({}, WEDDING, {shared:true, note:'In Rohtak, hosted by Sulekha\'s family.'})
     ],
     travel:[
       ['Fly in','Jaipur Airport (JAI)'],
@@ -386,7 +388,7 @@ function renderSide(key){
     var prog=e.prog?'<ul class="prog">'+e.prog.map(function(p){return '<li><b>'+esc(p[0])+'</b><span>'+esc(p[1])+'</span></li>';}).join('')+'</ul>':'';
     var links='';
     if(e.map) links+='<a class="btn" target="_blank" rel="noopener" href="'+MAP(e.map)+'">Map</a>';
-    if(e.main && key==='bride') links+='<a class="btn ghost" target="_blank" rel="noopener" href="'+CAL+'">Add to calendar</a>';
+    if(e.name==='Wedding') links+='<a class="btn ghost" target="_blank" rel="noopener" href="'+CAL+'">Add to calendar</a>';
     if(e.link) links+='<a class="btn ghost" href="#'+e.link+'">Wedding day</a>';
     var th=THEME[e.name]||THEME.Wedding;
     return '<article class="ev" style="--evbg:'+th[0]+';--evink:'+th[1]+';--evbtn:'+th[2]+'"><div class="ic" aria-hidden="true">'+(ICON[e.name]||ICON.Wedding)+'</div><div class="in">'+
