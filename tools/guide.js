@@ -29,7 +29,7 @@ const html=`<!doctype html><html><head><meta charset="utf-8"><style>
 *{box-sizing:border-box}
 body{margin:0;font:10.5pt/1.45 Inter,'DejaVu Sans',sans-serif;color:#262222;background:#FFF6E6;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .hi{font-family:FreeSerif,serif}
-header{position:relative;background:#7C0F23;color:#FFE7A3;text-align:center;padding:72px 40px 18px}
+header{position:relative;background:#7C0F23;color:#FFE7A3;text-align:center;padding:70px 40px 14px}
 .toran{position:absolute;left:0;right:0;top:0;height:78px;background:${d.toran} repeat-x center top}
 header .hi{color:#F2C230;font-size:14pt}
 header h1{font-family:Caladea,'DejaVu Serif',serif;font-weight:700;font-size:30pt;margin:2px 0 0;letter-spacing:.5px}
@@ -50,7 +50,7 @@ ul{margin:4px 0 0;padding-left:16px;font-size:9.6pt}
 li{margin:1px 0}
 .faq{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-size:9.4pt}
 .faq b{display:block;color:#7C0F23}
-footer{margin:10px 36px 0;padding:12px 16px;background:#7C0F23;color:#F9D9A0;border-radius:10px;display:flex;justify-content:space-between;align-items:center;font-size:9.6pt}
+footer{margin:6px 36px 0;padding:10px 16px;background:#7C0F23;color:#F9D9A0;border-radius:10px;display:flex;justify-content:space-between;align-items:center;font-size:9.6pt}
 footer .hi{color:#F2C230;font-size:13pt}
 </style></head><body>
 <header><div class="toran"></div><div class="hi">॥ शुभ विवाह ॥</div><h1>Sulekha weds Anubhav</h1><p>19 to 20 November 2026 · Jaipur and Rohtak</p></header>
@@ -59,7 +59,7 @@ ${side('groom',"Groom's side","Jaipur, Rajasthan",'#B0225A')}
 ${side('bride',"Bride's side","Rohtak, Haryana",'#A3162F')}
 <section class="side" style="--a:#7C0F23"><h2>Good to know</h2><div class="faq">${d.FAQ.filter(f=>f[1]!=='To be added').map(f=>`<div><b>${esc(f[0])}</b>${esc(f[1])}</div>`).join('')}</div></section>
 </main>
-<footer><span class="hi">ढोल बजेगा, नाचना पड़ेगा!</span><span>RSVP and latest updates: <b>anubhavbhardwaj.github.io/sulekhaanubhav</b></span></footer>
+<footer><span><span class="hi">ढोल बजेगा, नाचना पड़ेगा!</span> &nbsp;<b style="color:#FFE7A3;font-size:11pt">#AnukhaKiChemistry</b></span><span>RSVP and latest updates: <b>anubhavbhardwaj.github.io/sulekhaanubhav</b></span></footer>
 </body></html>`;
 const g=await b.newPage();await g.setContent(html,{waitUntil:'load'});
 await g.pdf({path:OUT,format:'A4',printBackground:true,margin:{top:0,bottom:0,left:0,right:0}});

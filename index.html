@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Sulekha and Anubhav are getting married. Events in Jaipur and Rohtak, November 2026.">
+<meta name="description" content="Sulekha and Anubhav are getting married. Events in Jaipur and Rohtak, November 2026. #AnukhaKiChemistry">
 <title>Sulekha and Anubhav</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&family=DM+Sans:wght@400;500&family=Yatra+One&family=Tiro+Devanagari+Hindi&display=swap">
@@ -58,6 +58,11 @@ button{font:inherit}
 .top .count div{background:var(--har-gold);border-color:var(--har-gold);color:var(--maroon)}
 .top .count span{color:var(--maroon)}
 .top .tag{color:#F9D9A0}
+.ht{font:400 22px var(--folk);color:var(--maroon);background:#FFE7A3;border:0;border-radius:999px;padding:6px 18px;margin-top:6px;cursor:pointer}
+.ht:hover{background:#F2C230}
+.bond{font-size:13px;color:#F9D9A0;font-style:italic}
+.crest .ht{background:var(--c);color:#fff;font-size:18px;padding:4px 14px}
+.foot .ht{background:var(--har-gold);font-size:20px;justify-self:center}
 .dl{display:inline-flex;align-items:center;gap:6px;margin-top:14px;background:transparent;color:#FFE7A3;border:1.5px solid #F2C230;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:500;text-decoration:none}
 .dl:hover{background:#F2C230;color:var(--maroon)}
 .chips a.chipdl{flex:none;display:inline-flex;align-items:center;gap:5px;border:1px solid var(--c);background:var(--c);color:#fff;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:500;text-decoration:none}
@@ -239,6 +244,8 @@ details p{margin-top:8px;color:var(--ink)}
     <h1>Sulekha <i>weds</i> Anubhav</h1>
     <div class="kicker">19 to 20 November 2026 · Jaipur and Rohtak</div>
     <p class="tag">Two hometowns, one wedding</p>
+    <button class="ht" type="button" data-ht>#AnukhaKiChemistry</button>
+    <p class="bond">Sulekha + Anubhav → a stable bond</p>
     <div class="count" data-count></div>
     <a class="dl" href="guide.pdf" download="Sulekha-Anubhav-guest-guide.pdf"><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 3v9m0 0l-4-4m4 4l4-4M4 15h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Guest guide (PDF)</a>
   </div></header>
@@ -287,7 +294,7 @@ details p{margin-top:8px;color:var(--ink)}
     </div>
   </div></section>
 
-  <footer class="foot wrap"><div class="toran"></div><b>ढोल बजेगा, नाचना पड़ेगा!</b><span>The dhol will play. You will have to dance. See you in November.</span></footer>
+  <footer class="foot wrap"><div class="toran"></div><b>ढोल बजेगा, नाचना पड़ेगा!</b><button class="ht" type="button" data-ht>#AnukhaKiChemistry</button><span>The dhol will play. You will have to dance. See you in November.</span></footer>
 </div>
 
 <div id="side" class="side" hidden></div>
@@ -395,7 +402,7 @@ function renderSide(key){
     '<div class="bar wrap"><div class="col"><a href="#">← Home</a><a class="sw" href="#'+s.other+'">'+s.otherLabel+' →</a></div></div>'+
     '<div class="band wrap"><div class="toran"></div><canvas class="petals" data-petals></canvas><div class="col"><div class="crest">'+
       '<div class="greet">'+s.greet+'</div>'+
-      '<h2>'+esc(s.title)+'</h2><div class="place">'+esc(s.place)+'</div>'+
+      '<h2>'+esc(s.title)+'</h2><div class="place">'+esc(s.place)+'</div>'+'<button class="ht" type="button" data-ht>#AnukhaKiChemistry</button>'+
       '<div class="count" data-count></div></div></div></div>'+
     '<nav class="chips wrap" aria-label="Sections"><div class="col">'+
       [['events','Events'],['travel','Travel'],['stay','Stay'],['rsvp','RSVP'],['faq','FAQ']].map(function(c){return '<button type="button" data-jump="'+c[0]+'">'+c[1]+'</button>';}).join('')+'<a class="chipdl" href="guide.pdf" download="Sulekha-Anubhav-guest-guide.pdf">Guide PDF</a>'+
@@ -473,6 +480,12 @@ function route(){
 }
 window.addEventListener('hashchange',route);
 route(); tick(); setInterval(tick,30000);
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('[data-ht]'); if(!b)return;
+  var t='#AnukhaKiChemistry';
+  var ok=function(){b.textContent='Copied!';setTimeout(function(){b.textContent=t;},1400);};
+  try{navigator.clipboard.writeText(t).then(ok,function(){});}catch(x){}
+});
 
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
