@@ -382,8 +382,11 @@ var SIDES = {
     greet:'पधारो म्हारे देस', greetEn:'Welcome to our land',
     title:'Anubhav weds Sulekha', place:'Jaipur, Rajasthan',
     stay:['Libra Lords Inn','Rooms are booked for you.','Libra Lords Inn Jaipur Sikar Road Ambabari'],
-    whatsapp:'4915124325746',
-    contact:'Anubhav: call +91 96678 26471, WhatsApp +49 151 24325746',
+    noRsvp:true,
+    contact:'Anubhav: 96678 26471 · Dinesh Sharma (father): 99284 35339 · Rakesh Sharma (brother-in-law): 98875 29974',
+    people:[['Anubhav','Groom','+919667826471','+91 96678 26471'],
+            ['Dinesh Sharma','Father','+919928435339','+91 99284 35339'],
+            ['Rakesh Sharma','Brother-in-law','+919887529974','+91 98875 29974']],
     events:[
       {name:'Tilak', hi:'तिलक', color:'#E2561C', when:'Wed 18 Nov · 2:15 PM',
        venue:'P.S. Paradise, Vidhyadhar Nagar', addr:'Opposite Apollo Tower, Vidhyadhar Nagar, Jaipur',
@@ -410,7 +413,7 @@ var SIDES = {
     ],
     travel:[
       ['Fly in','Jaipur Airport (JAI)'],
-      ['To Rohtak','Our baraat bus. Tick it in your RSVP.']
+      ['To Rohtak','Our baraat bus, Fri 20 Nov at 9:15 AM.']
     ]
   }
 };
@@ -565,7 +568,7 @@ function renderSide(key){
       '<h2>'+esc(s.title)+'</h2><div class="place">'+esc(s.place)+'</div>'+'<button class="ht" type="button" data-ht>#AnukhaKiChemistry</button>'+
       '<div class="count" data-count></div></div></div></div>'+
     '<nav class="chips wrap" aria-label="Sections"><div class="col">'+
-      [['events','Events'],['travel','Travel']].concat(s.stay?[['stay','Stay']]:[]).concat(s.noRsvp?[]:[['rsvp','RSVP']]).concat([['faq','FAQ']]).map(function(c){return '<button type="button" data-jump="'+c[0]+'">'+c[1]+'</button>';}).join('')+'<a class="chipdl" href="guide.pdf" download="Sulekha-Anubhav-guest-guide.pdf">Guide PDF</a>'+
+      [['events','Events'],['travel','Travel']].concat(s.stay?[['stay','Stay']]:[]).concat(s.noRsvp?[]:[['rsvp','RSVP']]).concat(s.people?[['contact','Contact']]:[]).concat([['faq','FAQ']]).map(function(c){return '<button type="button" data-jump="'+c[0]+'">'+c[1]+'</button>';}).join('')+'<a class="chipdl" href="guide.pdf" download="Sulekha-Anubhav-guest-guide.pdf">Guide PDF</a>'+
     '</div></nav>'+
     '<div class="body wrap"><div class="col">'+
       (key==='groom'
@@ -583,6 +586,7 @@ function renderSide(key){
           '<p class="err" id="r-err" hidden></p>'+
           '<div class="links"><button class="btn solid" type="submit">Send RSVP</button></div>'+
         '</form><div class="out" id="r-out" hidden></div></div></section>')+
+      (s.people?'<section class="sec" id="s-contact"><h3>Contact</h3><div class="grid2">'+s.people.map(function(c){return '<div class="panel"><h4>'+esc(c[0])+'</h4><p>'+esc(c[1])+' · '+esc(c[3])+'</p><div class="links"><a class="btn solid" href="tel:'+esc(c[2])+'">Call</a><a class="btn" target="_blank" rel="noopener" href="https://wa.me/'+esc(c[2].replace('+',''))+'">WhatsApp</a></div></div>';}).join('')+'</div></section>':'')+
       '<section class="sec" id="s-faq"><h3>FAQ</h3><div>'+faq+'</div></section>'+
     '</div></div>';
 
