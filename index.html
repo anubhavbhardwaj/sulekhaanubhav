@@ -211,8 +211,42 @@ details p{margin-top:8px;color:var(--ink)}
 
 @media (max-width:600px){
   .pair{grid-template-columns:1fr}
-  .doors{grid-template-columns:1fr;min-height:0}
-  .door{padding-block:44px}
+  /* Home: short header, both sides visible on the first screen, side by side */
+  .top{padding-block:68px 20px}
+  .top .col{gap:6px}
+  .top .shubh{font-size:15px}
+  .top h1{font-size:46px}
+  .top h1 i{margin-block:2px}
+  .top .kicker{font-size:11px;letter-spacing:.16em}
+  .top .tag{display:none}
+  .ht{font-size:17px;padding:5px 14px;margin-top:4px}
+  .count{margin-top:6px}
+  .count div{min-width:58px;padding:6px 4px}
+  .count b{font-size:22px}
+  .dl{margin-top:8px;padding:8px 14px;font-size:13px;min-height:40px}
+  .doors{grid-template-columns:1fr 1fr;min-height:0}
+  .door{padding:16px 6px;align-items:stretch}
+  .plate{width:100%;max-width:none;padding:14px 8px 12px;align-content:center}
+  .groom .plate{padding-top:30px;border-radius:90px 90px 10px 10px}
+  .bride .plate,.groom .plate{box-shadow:0 0 0 4px var(--c-door,transparent)}
+  .bride .plate{--c-door:var(--har)}.groom .plate{--c-door:var(--raj)}
+  .plate .greet{font-size:12.5px;line-height:1.35}
+  .plate b{font-size:23px}
+  .plate small{font-size:12.5px}
+  .plate .go{margin-top:6px;padding:8px 14px}
+  /* Side pages: shorter band so events start near the top */
+  .band{padding-block:62px 0}
+  .crest{padding:16px 16px 12px;gap:4px}
+  .groom .crest{padding-top:30px;border-radius:50% 50% 0 0 / 70px 70px 0 0}
+  .crest .greet{font-size:17px}
+  .crest h2{font-size:27px}
+  .crest .ht{font-size:15px}
+  .crest .count div{min-width:54px}
+  /* Section buttons: wrap, nothing hidden off-screen, bigger tap targets */
+  .chips .col{flex-wrap:wrap;overflow:visible;padding-block:10px;gap:6px}
+  .chips button,.chips a.chipdl{min-height:38px;padding:6px 14px}
+  .sec{padding-block:24px 4px;gap:12px}
+  .sec>h3{font-size:28px}
 }
 
 /* Groom journey: tap a day or a stop, the bus drives there and that event's card opens */
@@ -267,7 +301,7 @@ details.all .events{margin-top:6px}
   <header class="top wrap"><div class="toran"></div><canvas class="petals" data-petals></canvas><div class="col">
     <div class="shubh">॥ शुभ विवाह ॥</div>
     <h1>Sulekha <i>weds</i> Anubhav</h1>
-    <div class="kicker">19 to 20 November 2026 · Jaipur and Rohtak</div>
+    <div class="kicker">18 to 21 November 2026 · Jaipur and Rohtak</div>
     <p class="tag">Two hometowns, one wedding</p>
     <button class="ht" type="button" data-ht>#AnukhaKiChemistry</button>
     <div class="count" data-count></div>
@@ -644,8 +678,10 @@ document.addEventListener('click',function(e){
 (function(){
   var g=document.getElementById('gate'),open=document.getElementById('gate-open');
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var seen=false;try{seen=localStorage.getItem('gateSeen')==='1';}catch(x){}
+  if(seen||/^#(groom|bride)/.test(location.hash)){g.hidden=true;return;}
   document.documentElement.style.overflow='hidden';
-  function done(){g.hidden=true;document.documentElement.style.overflow='';}
+  function done(){g.hidden=true;document.documentElement.style.overflow='';try{localStorage.setItem('gateSeen','1');}catch(x){}}
   function go(e){if(e)e.stopPropagation();if(g.classList.contains('opening'))return;
     if(reduce){done();return;}
     g.classList.add('opening');setTimeout(done,1150);}
