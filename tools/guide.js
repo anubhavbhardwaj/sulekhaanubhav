@@ -8,7 +8,7 @@ const p=await b.newPage();
 await p.goto('file://'+path.resolve(SITE));
 const d=await p.evaluate(()=>({SIDES,FAQ,toran:getComputedStyle(document.documentElement).getPropertyValue('--toran').trim()}));
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const COL={Haldi:['#F7C531','#4A3300'],Mehendi:['#3E7B2E','#F3FBEA'],Sangeet:['#D9418A','#fff'],Baraat:['#B0225A','#FFE7A3'],'Getting ready':['#C9772B','#FFF6E6'],Wedding:['#A3162F','#FFE7A3']};
+const COL={Haldi:['#F7C531','#4A3300'],Mehendi:['#3E7B2E','#F3FBEA'],Sangeet:['#D9418A','#fff'],Tilak:['#E2561C','#FFF6E6'],Baraat:['#B0225A','#FFE7A3'],'Getting ready':['#C9772B','#FFF6E6'],Wedding:['#A3162F','#FFE7A3']};
 function side(k,title,city,accent){
   const s=d.SIDES[k];
   const ev=s.events.filter(e=>!e.shared).map(e=>{const c=COL[e.name]||COL.Wedding;return `<tr>
@@ -35,16 +35,16 @@ header .hi{color:#F2C230;font-size:14pt}
 header h1{font-family:Caladea,'DejaVu Serif',serif;font-weight:700;font-size:27pt;margin:0;letter-spacing:.5px}
 header p{margin:0;color:#F9D9A0;font-size:10.5pt;letter-spacing:.14em;text-transform:uppercase}
 main{padding:14px 36px 4px}
-.side{margin-bottom:10px;page-break-inside:avoid}
+.side{margin-bottom:6px;page-break-inside:avoid}
 h2{font-family:Caladea,'DejaVu Serif',serif;font-size:15pt;color:var(--a);margin:0 0 8px;border-bottom:2px solid var(--a);padding-bottom:3px}
 h2 span{font-size:10.5pt;color:#6E6762;font-family:Inter,sans-serif;font-weight:400;margin-left:6px}
-table{width:100%;border-collapse:separate;border-spacing:0 4px;font-size:9.1pt}
+table{width:100%;border-collapse:separate;border-spacing:0 3px;font-size:8.9pt}
 th{text-align:left;font-size:8pt;letter-spacing:.12em;text-transform:uppercase;color:#6E6762;font-weight:500;padding:0 8px}
-td{background:#fff;padding:4px 8px;vertical-align:top}
+td{background:#fff;padding:3px 8px;vertical-align:top}
 td.tag{font-weight:700;width:78px;border-radius:8px 0 0 8px}
 td:last-child{border-radius:0 8px 8px 0;width:24%}
 td:nth-child(2){width:19%}
-.addr{color:#6E6762;font-size:8.6pt;margin-top:2px}
+.addr{color:#6E6762;font-size:8.3pt;margin-top:1px}
 i{color:#8a817b}
 ul{margin:3px 0 0;padding-left:16px;font-size:9.1pt}
 li{margin:1px 0}
@@ -53,13 +53,13 @@ li{margin:1px 0}
 footer{margin:6px 36px 0;padding:10px 16px;background:#7C0F23;color:#F9D9A0;border-radius:10px;display:flex;justify-content:space-between;align-items:center;font-size:9.6pt}
 footer .hi{color:#F2C230;font-size:13pt}
 </style></head><body>
-<header><div class="toran"></div><div class="hi">॥ शुभ विवाह ॥</div><h1>Sulekha weds Anubhav</h1><p>19 to 20 November 2026 · Jaipur and Rohtak</p></header>
+<header><div class="toran"></div><div class="hi">॥ शुभ विवाह ॥</div><h1>Sulekha weds Anubhav</h1><p>18 to 21 November 2026 · Jaipur and Rohtak</p></header>
 <main>
 ${side('groom',"Groom's side","Jaipur, Rajasthan",'#B0225A')}
 ${side('bride',"Bride's side","Rohtak, Haryana",'#A3162F')}
 <section class="side" style="--a:#7C0F23"><h2>Good to know</h2><div class="faq">${d.FAQ.filter(f=>f[1]!=='To be added').map(f=>`<div><b>${esc(f[0])}</b>${esc(f[1])}</div>`).join('')}</div></section>
 </main>
-<footer><span><span class="hi">ढोल बजेगा, नाचना पड़ेगा!</span> &nbsp;<b style="color:#FFE7A3;font-size:11pt">#AnukhaKiChemistry</b></span><span>RSVP and latest updates: <b>anubhavbhardwaj.github.io/sulekhaanubhav</b></span></footer>
+<footer><span><span class="hi">ढोल बजेगा, नाचना पड़ेगा!</span> &nbsp;<b style="color:#FFE7A3;font-size:11pt">#AnukhaKiChemistry</b></span><span>RSVP and latest updates: <b>anukhakichemistry.live</b></span></footer>
 </body></html>`;
 const g=await b.newPage();await g.setContent(html,{waitUntil:'load'});
 await g.pdf({path:OUT,format:'A4',printBackground:true,margin:{top:0,bottom:0,left:0,right:0}});

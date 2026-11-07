@@ -217,8 +217,8 @@ details p{margin-top:8px;color:var(--ink)}
 
 /* Groom journey: tap a day or a stop, the bus drives there and that event's card opens */
 .journey{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;display:grid;gap:12px}
-.jdays{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.jdays button{min-height:44px;border-radius:999px;border:1.5px solid var(--raj);background:#fff;color:var(--raj-deep);font:600 14px var(--body);cursor:pointer}
+.jdays{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:8px}
+.jdays button{min-height:44px;padding:0 6px;border-radius:999px;border:1.5px solid var(--raj);background:#fff;color:var(--raj-deep);font:600 14px var(--body);cursor:pointer}
 .jdays button[aria-pressed="true"]{background:var(--raj);color:#fff}
 .journey svg{width:100%;height:auto;display:block;border-radius:10px;touch-action:manipulation}
 .jstop{cursor:pointer;outline:none}
@@ -318,7 +318,7 @@ details.all .events{margin-top:6px}
 <script>
 var WEDDING = {name:'Wedding', hi:'शुभ विवाह', color:'#A3162F', main:true, when:'Fri 20 Nov · 8 PM',
        venue:'Singhasan Banquet Hall, Tilyar Lake', addr:'Behind Tilyar Lake, Rohtak, Haryana', map:'Singhasan Banquet Hall Tilyar Lake Rohtak', dress:'Traditional Indian · bright colours',
-       prog:[['8:00 PM','Dinner'],['8:30 PM','Baraat welcome'],['Late night','Vidaai, under the stars']]};
+       prog:[['8:00 PM','Dinner'],['8:30 PM','Baraat welcome'],['Around 2 AM','Pheras (Sat 21 Nov)'],['Around 6 AM','Ceremonies end']]};
 var MAP = function(q){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);};
 var TBA = '<span class="tba">To be added</span>';
 
@@ -351,6 +351,10 @@ var SIDES = {
     whatsapp:'4915124325746',
     contact:'Anubhav: call +91 96678 26471, WhatsApp +49 151 24325746',
     events:[
+      {name:'Tilak', hi:'तिलक', color:'#E2561C', when:'Wed 18 Nov · 2:15 PM',
+       venue:'P.S. Paradise, Vidhyadhar Nagar', addr:'Opposite Apollo Tower, Vidhyadhar Nagar, Jaipur',
+       map:'P.S. Paradise Vidhyadhar Nagar Jaipur',
+       prog:[['2:15 PM','Lagan and sagai (tilak)'],['4:15 PM','Mahila sangeet'],['6:15 PM','Chaak bhaat'],['7:15 PM','Dinner (preetibhoj)']]},
       {name:'Haldi', hi:'हल्दी', color:'#F4B740', when:'Thu 19 Nov · 2 PM',
        venue:'Libra Lords Inn, Sikar Road', addr:'A-7 and A-16, Metal Colony, Sikar Road, Ambabari, Jaipur 302023',
        map:'Libra Lords Inn Jaipur Sikar Road Ambabari',
@@ -359,7 +363,7 @@ var SIDES = {
        venue:'Home, Karni Colony, Bhamashah Marg', addr:'Plot 23, Karni Colony, Bhamashah Marg, Jaipur, Rajasthan',
        map:'26.959063,75.765188',
        dress:'Green or bright'},
-      {name:'Baraat', hi:'बारात प्रस्थान', color:'#B0225A', main:true, when:'Fri 20 Nov · Morning',
+      {name:'Baraat', hi:'बारात प्रस्थान', color:'#B0225A', main:true, when:'Fri 20 Nov · 9:15 AM',
        venue:'Libra Lords Inn', addr:'Sikar Road, Ambabari, Jaipur', map:'Libra Lords Inn Jaipur Sikar Road Ambabari',
        dress:'Comfy for the bus · bring your outfit for the night',
        note:'Our bus to Rohtak, 5 to 6 hrs. We go to the hotel first.'},
@@ -384,7 +388,8 @@ var THEME={
   'Sangeet':['#D9418A','#FFFFFF','#9C1F5C'],
   'Baraat':['#B0225A','#FFE7A3','#861743'],
   'Wedding':['#A3162F','#FFE7A3','#7C0F23'],
-  'Getting ready':['#C9772B','#FFF6E6','#8A4C14']
+  'Getting ready':['#C9772B','#FFF6E6','#8A4C14'],
+  'Tilak':['#E2561C','#FFF6E6','#9A3410']
 };
 var ICON={
   'Haldi':'<svg viewBox="0 0 36 36"><ellipse cx="18" cy="24" rx="14" ry="7" fill="#B87900"/><ellipse cx="18" cy="21" rx="11.5" ry="4.5" fill="#FFB000"/><circle cx="14" cy="20" r="1.6" fill="#FFE58A"/><path d="M24 6c3 3 3 7 0 10" stroke="#3E7B2E" stroke-width="2" fill="none"/><path d="M24 10c-3 0-5-2-5-4 3 0 5 1 5 4z" fill="#4F9A3A"/></svg>',
@@ -407,13 +412,14 @@ function v(x){return x?esc(x):TBA;}
 
 /* Stops on the groom journey, in the same order as SIDES.groom.events. x,y in the SVG; at = start time in IST; lx,ly label offset; anchor */
 var JSTOPS=[
-  {x:30, y:80,  at:'2026-11-19T14:00:00+05:30', lx:0, ly:30,  a:'middle', t:'Thu · 2 PM'},
-  {x:104,y:64,  at:'2026-11-19T18:00:00+05:30', lx:0, ly:-32, a:'middle', t:'Thu · 6 PM'},
-  {x:70, y:175, at:'2026-11-20T08:00:00+05:30', lx:0, ly:30,  a:'middle', t:'Fri · morning'},
-  {x:282,y:70,  at:'2026-11-20T14:00:00+05:30', lx:0, ly:-34, a:'middle', t:'Fri · 2 PM'},
+  {x:26, y:170, at:'2026-11-18T14:15:00+05:30', lx:-18,ly:30, a:'start',  t:'Wed · 2:15 PM'},
+  {x:40, y:72,  at:'2026-11-19T14:00:00+05:30', lx:0, ly:-32, a:'middle', t:'Thu · 2 PM'},
+  {x:112,y:60,  at:'2026-11-19T18:00:00+05:30', lx:0, ly:-32, a:'middle', t:'Thu · 6 PM'},
+  {x:98, y:178, at:'2026-11-20T09:15:00+05:30', lx:16,ly:30,  a:'middle', t:'Fri · 9:15 AM'},
+  {x:284,y:70,  at:'2026-11-20T14:00:00+05:30', lx:12,ly:-34, a:'middle', t:'Fri · 2 PM'},
   {x:334,y:160, at:'2026-11-20T20:00:00+05:30', lx:16,ly:30,  a:'end',    t:'Fri · 8 PM'}
 ];
-var JPATH='M30 80 C55 50 85 48 104 64 C125 82 95 150 70 175 C95 195 125 182 150 172 C190 158 215 130 240 100 C255 82 262 72 282 70 C305 70 330 110 334 160';
+var JPATH='M26 170 C18 130 22 96 40 72 C58 48 92 42 112 60 C132 80 122 150 98 178 C117 196 142 186 167 176 C202 160 224 132 246 102 C260 84 268 72 284 70 C306 70 330 110 334 160';
 var JTOWNS=[['Kotputli',.2],['Behror',.45],['Rewari',.7],['Jhajjar',.88]];
 function journeyHTML(s){
   var days=[];s.events.forEach(function(e){var d=(e.when||'').split(' · ')[0];if(d&&days.indexOf(d)<0)days.push(d);});
@@ -444,8 +450,8 @@ function journeyHTML(s){
       '<path d="M11.5 -18 Q8 -13 8.5 -6" fill="none" stroke="#B0225A" stroke-width="2.4"/>'+
       '<path d="M15 -24 Q13 -31 17 -33 Q18 -28 16 -24 Z" fill="#EE7A12"/><circle cx="15.5" cy="-24.5" r="1.8" fill="#F4B740"/>'+
       '<circle cx="19" cy="-15.5" r=".9" fill="#262222" stroke="none"/></g></defs>'+
-      '<rect width="142" height="232" fill="#FDF0F4"/><rect x="142" width="110" height="232" fill="#FFF6E6"/><rect x="252" width="108" height="232" fill="#F3F8EA"/>'+
-      '<text class="jzone" x="8" y="16">JAIPUR</text><text class="jzone" x="197" y="16" text-anchor="middle">ON THE ROAD</text><text class="jzone" x="197" y="28" text-anchor="middle">5 TO 6 HRS</text><text class="jzone" x="352" y="16" text-anchor="end">ROHTAK</text>'+
+      '<rect width="152" height="232" fill="#FDF0F4"/><rect x="152" width="104" height="232" fill="#FFF6E6"/><rect x="256" width="104" height="232" fill="#F3F8EA"/>'+
+      '<text class="jzone" x="8" y="16">JAIPUR</text><text class="jzone" x="204" y="16" text-anchor="middle">ON THE ROAD</text><text class="jzone" x="204" y="28" text-anchor="middle">5 TO 6 HRS</text><text class="jzone" x="352" y="16" text-anchor="end">ROHTAK</text>'+
       '<path data-jroad d="'+JPATH+'" fill="none" stroke="#EADCEC" stroke-width="12" stroke-linecap="round"/>'+
       '<path d="'+JPATH+'" fill="none" stroke="#B0225A" stroke-width="2.4" stroke-dasharray="7 7" stroke-linecap="round"/>'+
       '<g data-jtowns></g>'+stops+
@@ -460,18 +466,19 @@ function startJourney(root,s,cards){
   var road=box.querySelector('[data-jroad]'),bus=box.querySelector('[data-jbus]'),card=box.querySelector('[data-jcard]'),pos=box.querySelector('[data-jpos]');
   var prev=box.querySelector('[data-jprev]'),next=box.querySelector('[data-jnext]'),stops=box.querySelectorAll('[data-jstop]'),dayBtns=box.querySelectorAll('[data-jday]');
   var L=road.getTotalLength(),N=s.events.length,run=++jRun;
+  var iB=0,iH=0;s.events.forEach(function(e,i){if(e.name==='Baraat')iB=i;if(e.name==='Getting ready')iH=i;});
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   // length along the road for each stop
   var at=JSTOPS.slice(0,N).map(function(p){var best=0,bd=1e9;for(var l=0;l<=L;l+=2){var q=road.getPointAtLength(l),d=(q.x-p.x)*(q.x-p.x)+(q.y-p.y)*(q.y-p.y);if(d<bd){bd=d;best=l;}}return best;});
   // towns along the bus leg (stop 2 to stop 3)
   var tw=box.querySelector('[data-jtowns]'),NS='http://www.w3.org/2000/svg';
-  JTOWNS.forEach(function(t){var q=road.getPointAtLength(at[2]+(at[3]-at[2])*t[1]);
+  JTOWNS.forEach(function(t){var q=road.getPointAtLength(at[iB]+(at[iH]-at[iB])*t[1]);
     var c=document.createElementNS(NS,'circle');c.setAttribute('cx',q.x);c.setAttribute('cy',q.y);c.setAttribute('r','3.2');c.setAttribute('fill','#fff');c.setAttribute('stroke','#B0225A');c.setAttribute('stroke-width','1.5');tw.appendChild(c);
     var tx=document.createElementNS(NS,'text');tx.setAttribute('class','jtown');tx.setAttribute('x',q.x+7);tx.setAttribute('y',q.y+14);tx.textContent=t[0];tw.appendChild(tx);});
   var curL=0,cur=-1,raf=0;
   var veh=bus.querySelectorAll('[data-v]'),vNow='';
   // car in Jaipur until the baraat leaves, bus from the baraat to the hotel, ghodi from the hotel to the wedding
-  function vehicle(l){var v=l<at[2]-1?'car':(l<=at[3]+1?'bus':'ghodi');if(v!==vNow){vNow=v;veh.forEach(function(u){u.style.display=u.dataset.v===v?'':'none';});}return v;}
+  function vehicle(l){var v=l<at[iB]-1?'car':(l<=at[iH]+1?'bus':'ghodi');if(v!==vNow){vNow=v;veh.forEach(function(u){u.style.display=u.dataset.v===v?'':'none';});}return v;}
   function place(l){var q=road.getPointAtLength(l),v=vehicle(l);bus.setAttribute('transform','translate('+q.x.toFixed(1)+' '+(q.y-(v==='ghodi'?6:3)).toFixed(1)+')');}
   function show(i){
     cur=i;card.innerHTML=cards[i];
@@ -581,8 +588,8 @@ function wireRsvp(s,key){
 }
 
 var CAL='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Wedding of Sulekha and Anubhav')+
-  '&dates=20261120T143000Z/20261120T200000Z&location='+encodeURIComponent('Singhasan Banquet Hall, behind Tilyar Lake, Rohtak')+
-  '&details='+encodeURIComponent('Dinner 8:00 PM, Baraat welcome 8:30 PM');
+  '&dates=20261120T143000Z/20261121T003000Z&location='+encodeURIComponent('Singhasan Banquet Hall, behind Tilyar Lake, Rohtak')+
+  '&details='+encodeURIComponent('Dinner 8:00 PM, Baraat welcome 8:30 PM, Pheras around 2 AM, ceremonies end around 6 AM (Sat 21 Nov)');
 
 var TARGET=new Date('2026-11-20T20:00:00+05:30').getTime();
 function tick(){
