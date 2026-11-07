@@ -230,17 +230,18 @@ details p{margin-top:8px;color:var(--ink)}
 .jstop.on .jlbl{fill:var(--raj-deep)}
 .jtime{font:500 11px var(--body);fill:var(--muted)}
 .jzone{font:600 10px var(--body);letter-spacing:.2em;fill:#B39C86}
-.jtown{font:500 10.5px var(--body);fill:var(--muted)}
+.jtown{font:500 9.5px var(--body);fill:var(--muted)}
 .jnav{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .jnav button{min-height:44px;min-width:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:#fff;font:600 16px var(--body);color:var(--raj-deep);cursor:pointer}
 .jnav button:disabled{opacity:.35;cursor:default}
 .jnav .pos{font-size:13px;color:var(--muted);text-align:center}
 .jcard .ev{animation:jin .35s ease}
 @keyframes jin{from{opacity:0;transform:translateY(8px)}}
-@media (min-width:700px){
-  .journey{grid-template-columns:minmax(0,340px) minmax(0,1fr);grid-template-areas:"days days" "map card" "nav card";column-gap:20px;align-items:start}
-  .jdays{grid-area:days}.journey svg{grid-area:map}.jnav{grid-area:nav}.jcard{grid-area:card;position:sticky;top:72px}
-}
+.journey{max-width:620px;margin-inline:auto;scroll-margin-top:64px;gap:10px}
+.jcard .ev{padding:14px 16px;grid-template-columns:44px minmax(0,1fr);gap:12px}
+.groom .jcard .ev{padding-top:16px}
+.jcard .ev .ic{width:44px;height:44px}.jcard .ev .ic svg{width:28px;height:28px}
+.jcard .ev h4{font-size:24px}.jcard .ev .in{gap:8px}
 details.all{margin-top:14px}
 details.all summary{cursor:pointer;font-size:14px;color:var(--raj-deep);padding:10px 0;min-height:44px}
 details.all .events{margin-top:6px}
@@ -406,14 +407,14 @@ function v(x){return x?esc(x):TBA;}
 
 /* Stops on the groom journey, in the same order as SIDES.groom.events. x,y in the SVG; at = start time in IST; lx,ly label offset; anchor */
 var JSTOPS=[
-  {x:80, y:508, at:'2026-11-19T14:00:00+05:30', lx:0,  ly:30, a:'start', t:'Thu · 2 PM'},
-  {x:268,y:468, at:'2026-11-19T18:00:00+05:30', lx:-24,ly:-10, a:'end',  t:'Thu · 6 PM'},
-  {x:100,y:400, at:'2026-11-20T08:00:00+05:30', lx:-14,ly:24, a:'end',  t:'Fri · morning'},
-  {x:110,y:120, at:'2026-11-20T14:00:00+05:30', lx:16, ly:22, a:'start', t:'Fri · 2 PM'},
-  {x:268,y:60,  at:'2026-11-20T20:00:00+05:30', lx:16, ly:8,  a:'start', t:'Fri · 8 PM'}
+  {x:30, y:80,  at:'2026-11-19T14:00:00+05:30', lx:0, ly:30,  a:'middle', t:'Thu · 2 PM'},
+  {x:104,y:64,  at:'2026-11-19T18:00:00+05:30', lx:0, ly:-32, a:'middle', t:'Thu · 6 PM'},
+  {x:70, y:175, at:'2026-11-20T08:00:00+05:30', lx:0, ly:30,  a:'middle', t:'Fri · morning'},
+  {x:282,y:70,  at:'2026-11-20T14:00:00+05:30', lx:0, ly:-34, a:'middle', t:'Fri · 2 PM'},
+  {x:334,y:160, at:'2026-11-20T20:00:00+05:30', lx:16,ly:30,  a:'end',    t:'Fri · 8 PM'}
 ];
-var JPATH='M80 508 C150 524 240 524 268 468 C296 414 160 432 100 400 C40 368 70 340 140 320 C230 294 282 258 220 224 C158 190 88 190 110 120 C124 74 210 92 268 60';
-var JTOWNS=[['Kotputli',.22],['Behror',.42],['Rewari',.62],['Jhajjar',.8]];
+var JPATH='M30 80 C55 50 85 48 104 64 C125 82 95 150 70 175 C95 195 125 182 150 172 C190 158 215 130 240 100 C255 82 262 72 282 70 C305 70 330 110 334 160';
+var JTOWNS=[['Kotputli',.2],['Behror',.45],['Rewari',.7],['Jhajjar',.88]];
 function journeyHTML(s){
   var days=[];s.events.forEach(function(e){var d=(e.when||'').split(' · ')[0];if(d&&days.indexOf(d)<0)days.push(d);});
   var stops=s.events.map(function(e,i){var p=JSTOPS[i];if(!p)return '';
@@ -423,7 +424,7 @@ function journeyHTML(s){
       '<text class="jtime" x="'+(p.x+p.lx)+'" y="'+(p.y+p.ly+14)+'" text-anchor="'+p.a+'">'+esc(p.t)+'</text></g>';}).join('');
   return '<div class="journey" data-journey>'+
     '<div class="jdays" role="group" aria-label="Choose a day">'+days.map(function(d){return '<button type="button" data-jday="'+esc(d)+'" aria-pressed="false">'+esc(d)+'</button>';}).join('')+'</div>'+
-    '<svg viewBox="0 0 360 560" aria-label="Journey map from Jaipur to Rohtak. Tap a stop to see that event.">'+
+    '<svg viewBox="0 0 360 232" aria-label="Journey map from Jaipur to Rohtak. Tap a stop to see that event.">'+
       '<defs><g id="j-bus"><rect x="-17" y="-12" width="34" height="18" rx="4" fill="#F4B740" stroke="#861743" stroke-width="1.6"/>'+
       '<rect x="-13" y="-8.5" width="6" height="5.5" rx="1" fill="#fff"/><rect x="-5" y="-8.5" width="6" height="5.5" rx="1" fill="#fff"/><rect x="3" y="-8.5" width="6" height="5.5" rx="1" fill="#fff"/><rect x="11" y="-8.5" width="4" height="7" rx="1" fill="#DDEBFF"/>'+
       '<rect x="-17" y="0" width="34" height="2.6" fill="#B0225A"/><circle cx="-9" cy="6.5" r="3.4" fill="#262222"/><circle cx="9" cy="6.5" r="3.4" fill="#262222"/>'+
@@ -443,8 +444,8 @@ function journeyHTML(s){
       '<path d="M11.5 -18 Q8 -13 8.5 -6" fill="none" stroke="#B0225A" stroke-width="2.4"/>'+
       '<path d="M15 -24 Q13 -31 17 -33 Q18 -28 16 -24 Z" fill="#EE7A12"/><circle cx="15.5" cy="-24.5" r="1.8" fill="#F4B740"/>'+
       '<circle cx="19" cy="-15.5" r=".9" fill="#262222" stroke="none"/></g></defs>'+
-      '<rect width="360" height="175" fill="#F3F8EA"/><rect y="175" width="360" height="190" fill="#FFF6E6"/><rect y="365" width="360" height="195" fill="#FDF0F4"/>'+
-      '<text class="jzone" x="14" y="22">ROHTAK · HARYANA</text><text class="jzone" x="346" y="356" text-anchor="end">ON THE ROAD · 5 TO 6 HRS</text><text class="jzone" x="346" y="548" text-anchor="end">JAIPUR · RAJASTHAN</text>'+
+      '<rect width="142" height="232" fill="#FDF0F4"/><rect x="142" width="110" height="232" fill="#FFF6E6"/><rect x="252" width="108" height="232" fill="#F3F8EA"/>'+
+      '<text class="jzone" x="8" y="16">JAIPUR</text><text class="jzone" x="197" y="16" text-anchor="middle">ON THE ROAD</text><text class="jzone" x="197" y="28" text-anchor="middle">5 TO 6 HRS</text><text class="jzone" x="352" y="16" text-anchor="end">ROHTAK</text>'+
       '<path data-jroad d="'+JPATH+'" fill="none" stroke="#EADCEC" stroke-width="12" stroke-linecap="round"/>'+
       '<path d="'+JPATH+'" fill="none" stroke="#B0225A" stroke-width="2.4" stroke-dasharray="7 7" stroke-linecap="round"/>'+
       '<g data-jtowns></g>'+stops+
@@ -466,12 +467,12 @@ function startJourney(root,s,cards){
   var tw=box.querySelector('[data-jtowns]'),NS='http://www.w3.org/2000/svg';
   JTOWNS.forEach(function(t){var q=road.getPointAtLength(at[2]+(at[3]-at[2])*t[1]);
     var c=document.createElementNS(NS,'circle');c.setAttribute('cx',q.x);c.setAttribute('cy',q.y);c.setAttribute('r','3.2');c.setAttribute('fill','#fff');c.setAttribute('stroke','#B0225A');c.setAttribute('stroke-width','1.5');tw.appendChild(c);
-    var tx=document.createElementNS(NS,'text');tx.setAttribute('class','jtown');tx.setAttribute('x',q.x+9);tx.setAttribute('y',q.y+4);tx.textContent=t[0];tw.appendChild(tx);});
+    var tx=document.createElementNS(NS,'text');tx.setAttribute('class','jtown');tx.setAttribute('x',q.x+7);tx.setAttribute('y',q.y+14);tx.textContent=t[0];tw.appendChild(tx);});
   var curL=0,cur=-1,raf=0;
   var veh=bus.querySelectorAll('[data-v]'),vNow='';
   // car in Jaipur until the baraat leaves, bus from the baraat to the hotel, ghodi from the hotel to the wedding
   function vehicle(l){var v=l<at[2]-1?'car':(l<=at[3]+1?'bus':'ghodi');if(v!==vNow){vNow=v;veh.forEach(function(u){u.style.display=u.dataset.v===v?'':'none';});}return v;}
-  function place(l){var q=road.getPointAtLength(l),v=vehicle(l);bus.setAttribute('transform','translate('+q.x.toFixed(1)+' '+(q.y-(v==='ghodi'?19:17)).toFixed(1)+')');}
+  function place(l){var q=road.getPointAtLength(l),v=vehicle(l);bus.setAttribute('transform','translate('+q.x.toFixed(1)+' '+(q.y-(v==='ghodi'?6:3)).toFixed(1)+')');}
   function show(i){
     cur=i;card.innerHTML=cards[i];
     stops.forEach(function(g,j){g.classList.toggle('on',j===i);});
@@ -479,17 +480,18 @@ function startJourney(root,s,cards){
     dayBtns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.jday===d?'true':'false');});
     prev.disabled=i===0;next.disabled=i===N-1;pos.textContent=(i+1)+' of '+N+' · tap a stop';
   }
-  function go(i){
-    if(i<0||i>=N)return;show(i);cancelAnimationFrame(raf);
+  function frame(){var r=box.getBoundingClientRect(),c=card.getBoundingClientRect();if(c.bottom>innerHeight||r.top<0)box.scrollIntoView({block:'start',behavior:reduce?'auto':'smooth'});}
+  function go(i,user){
+    if(i<0||i>=N)return;show(i);if(user)frame();cancelAnimationFrame(raf);
     var from=curL,to=at[i];
     if(reduce){curL=to;place(to);return;}
     var dur=Math.min(2200,Math.max(500,Math.abs(to-from)*2.2)),t0=null,ease=function(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;};
     function f(ts){if(run!==jRun)return;if(t0===null)t0=ts;var k=Math.min(1,(ts-t0)/dur);curL=from+(to-from)*ease(k);place(curL);if(k<1)raf=requestAnimationFrame(f);}
     raf=requestAnimationFrame(f);
   }
-  stops.forEach(function(g){var i=+g.dataset.jstop;g.addEventListener('click',function(){go(i);});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go(i);}});});
-  dayBtns.forEach(function(b){b.addEventListener('click',function(){for(var i=0;i<N;i++){if((s.events[i].when||'').indexOf(b.dataset.jday)===0){go(i);break;}}});});
-  prev.addEventListener('click',function(){go(cur-1);});next.addEventListener('click',function(){go(cur+1);});
+  stops.forEach(function(g){var i=+g.dataset.jstop;g.addEventListener('click',function(){go(i,1);});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go(i,1);}});});
+  dayBtns.forEach(function(b){b.addEventListener('click',function(){for(var i=0;i<N;i++){if((s.events[i].when||'').indexOf(b.dataset.jday)===0){go(i,1);break;}}});});
+  prev.addEventListener('click',function(){go(cur-1,1);});next.addEventListener('click',function(){go(cur+1,1);});
   // start at the event happening now (or the next one), else the first
   var now=Date.now(),start=0;JSTOPS.slice(0,N).forEach(function(p,i){if(Date.parse(p.at)<=now)start=i;});
   curL=at[start];place(curL);show(start);
