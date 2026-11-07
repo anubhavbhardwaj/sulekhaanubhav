@@ -8,7 +8,7 @@ const p=await b.newPage();
 await p.goto('file://'+path.resolve(SITE));
 const d=await p.evaluate(()=>({SIDES,FAQ,toran:getComputedStyle(document.documentElement).getPropertyValue('--toran').trim()}));
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const COL={Haldi:['#F7C531','#4A3300'],Mehendi:['#3E7B2E','#F3FBEA'],Sangeet:['#D9418A','#fff'],Baraat:['#B0225A','#FFE7A3'],Wedding:['#A3162F','#FFE7A3']};
+const COL={Haldi:['#F7C531','#4A3300'],Mehendi:['#3E7B2E','#F3FBEA'],Sangeet:['#D9418A','#fff'],Baraat:['#B0225A','#FFE7A3'],'Getting ready':['#C9772B','#FFF6E6'],Wedding:['#A3162F','#FFE7A3']};
 function side(k,title,city,accent){
   const s=d.SIDES[k];
   const ev=s.events.filter(e=>!e.shared).map(e=>{const c=COL[e.name]||COL.Wedding;return `<tr>
