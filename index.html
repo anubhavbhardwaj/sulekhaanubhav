@@ -272,6 +272,18 @@ details p{margin-top:8px;color:var(--ink)}
 .jcard .ev{animation:jin .35s ease}
 @keyframes jin{from{opacity:0;transform:translateY(8px)}}
 .journey{max-width:620px;margin-inline:auto;scroll-margin-top:64px;gap:10px}
+/* Wide screens: map on the left, event card on the right, using the full width */
+@media (min-width:900px){
+  .journey{max-width:none;margin-inline:calc(50% - min(560px,50vw - 32px));padding:16px;column-gap:24px;row-gap:12px;
+    grid-template-columns:minmax(0,1.4fr) minmax(320px,1fr);grid-template-areas:"days card" "map card" "nav card";align-items:start}
+  .jdays{grid-area:days}.journey svg{grid-area:map}.jnav{grid-area:nav}
+  #s-events>h3,#s-events>details.all{margin-inline:calc(50% - min(560px,50vw - 32px))}
+  .jcard{grid-area:card;align-self:stretch;display:flex}
+  .jcard .ev{flex:1;padding:22px 22px;grid-template-columns:56px minmax(0,1fr);gap:16px}
+  .jcard .ev .ic{width:56px;height:56px}.jcard .ev .ic svg{width:34px;height:34px}
+  .jcard .ev h4{font-size:32px}
+  .jcard .ev .in{font-size:16.5px;gap:12px}.jcard .ev .when{font-size:16px}
+}
 .jcard .ev{padding:14px 16px;grid-template-columns:44px minmax(0,1fr);gap:12px}
 .groom .jcard .ev{padding-top:16px}
 .jcard .ev .ic{width:44px;height:44px}.jcard .ev .ic svg{width:28px;height:28px}
